@@ -1,3 +1,5 @@
+using System.Linq;
+
 class Clinic
 {
     private List<Doctor> _doctors;
@@ -49,6 +51,25 @@ class Clinic
         }
 
         Console.WriteLine("Нет такой записи");
+    }
+
+    public void CancelAppointment(int appointmentId)
+    {
+        var appointment = _appointments.FirstOrDefault(a => a.ID == appointmentId);
+
+        if (appointment == null)
+        {
+            Console.WriteLine("Такой записи не существует.");
+            return;
+        }
+        if (appointment.IsBooked == false)
+        {
+            Console.WriteLine("Это окно уже свободно");
+            return;
+        }
+
+        appointment.IsBooked = false;
+        Console.WriteLine($"Запись {appointmentId} отменена");
     }
 
     

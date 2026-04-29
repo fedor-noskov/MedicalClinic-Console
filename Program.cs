@@ -16,3 +16,9 @@ clinic.BookAppointment(1);
 Console.WriteLine("Попытка забронировать несуществующую запись ID 55");
 clinic.BookAppointment(55);
 
+Console.WriteLine("Пациент отменяет запись ID 1");
+clinic.CancelAppointment(1);
+
+Console.WriteLine("Доступные записи после отмены: ");
+clinic.ShowAvailableAppointments();
+
