@@ -1,0 +1,14 @@
+C:\Local\dev\CSharp\Med_App\bin\Debug\net10.0\Med_App.exe
+C:\Local\dev\CSharp\Med_App\bin\Debug\net10.0\Med_App.deps.json
+C:\Local\dev\CSharp\Med_App\bin\Debug\net10.0\Med_App.runtimeconfig.json
+C:\Local\dev\CSharp\Med_App\bin\Debug\net10.0\Med_App.dll
+C:\Local\dev\CSharp\Med_App\bin\Debug\net10.0\Med_App.pdb
+C:\Local\dev\CSharp\Med_App\obj\Debug\net10.0\Med_App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Local\dev\CSharp\Med_App\obj\Debug\net10.0\Med_App.AssemblyInfoInputs.cache
+C:\Local\dev\CSharp\Med_App\obj\Debug\net10.0\Med_App.AssemblyInfo.cs
+C:\Local\dev\CSharp\Med_App\obj\Debug\net10.0\Med_App.csproj.CoreCompileInputs.cache
+C:\Local\dev\CSharp\Med_App\obj\Debug\net10.0\Med_App.dll
+C:\Local\dev\CSharp\Med_App\obj\Debug\net10.0\refint\Med_App.dll
+C:\Local\dev\CSharp\Med_App\obj\Debug\net10.0\Med_App.pdb
+C:\Local\dev\CSharp\Med_App\obj\Debug\net10.0\Med_App.genruntimeconfig.cache
+C:\Local\dev\CSharp\Med_App\obj\Debug\net10.0\ref\Med_App.dll
