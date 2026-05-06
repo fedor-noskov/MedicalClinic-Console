@@ -9,17 +9,34 @@ class Appointment
     
     public int ID {get => _id; private set => _id = value > 0 ? value : 0;}
 
-    public Doctor Doctor {get => _doctor; set => _doctor = value ?? null; }
+    public Doctor Doctor {get => _doctor; set => _doctor = value ?? throw new ArgumentNullException(nameof(value)); }
 
-    public bool IsBooked {get => _isBooked; set => _isBooked = value;}
+    public bool IsBooked {get => _isBooked; private set => _isBooked = value;}
 
-    public Appointment(int id, Doctor doctor, DateTime dateTime, bool isBooked)
+    public Patient? Patient {get; private set;}
+
+    public Appointment(int id, Doctor doctor, DateTime dateTime)
     {
         ID = id;
         Doctor = doctor;
         DateTime = dateTime;
-        this.IsBooked = isBooked;
+        IsBooked = false;
     }
+
+    public void Book(Patient patient)
+    {
+        if(IsBooked) throw new InvalidOperationException("Запись уже занята");
+        Patient = patient;
+        IsBooked = true;
+    }
+
+    public void Cancel()
+    {
+        if (!IsBooked) throw new InvalidOperationException("Запись уже отменена");
+        Patient = null;
+        IsBooked = false;
+    }
+
 
 
 
