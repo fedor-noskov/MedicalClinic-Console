@@ -16,8 +16,8 @@ class Clinic
         _doctors.Add(doctor1);
         _doctors.Add(doctor2);
 
-        _appointments.Add(new Appointment(1, doctor1, "29.04.2026 12:00", false));
-        _appointments.Add(new Appointment(2, doctor2, "29.04.2026 13:00", false));
+        _appointments.Add(new Appointment(1, doctor1, new DateTime(2026, 4, 29, 12, 0, 0), false));
+        _appointments.Add(new Appointment(2, doctor2, new DateTime(2026, 4, 29, 13, 0, 0), false));
 
     }
 
@@ -25,7 +25,7 @@ class Clinic
     {
         foreach (var appointment in _appointments)
         {
-            if (appointment.IsBooked == false) Console.WriteLine($"{appointment.Doctor.Name}, свободен в {appointment.Date}");
+            if (appointment.IsBooked == false) Console.WriteLine($"{appointment.Doctor.Name}, свободен в {appointment.DateTime}");
         }
         
     }
