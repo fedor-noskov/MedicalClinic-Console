@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Linq.Expressions;
 
 class Clinic
 {
@@ -16,42 +17,41 @@ class Clinic
         _doctors.Add(doctor1);
         _doctors.Add(doctor2);
 
-        _appointments.Add(new Appointment(1, doctor1, new DateTime(2026, 4, 29, 12, 0, 0), false));
-        _appointments.Add(new Appointment(2, doctor2, new DateTime(2026, 4, 29, 13, 0, 0), false));
+        _appointments.Add(new Appointment(1, doctor1, new DateTime(2026, 4, 29, 12, 0, 0)));
+        _appointments.Add(new Appointment(2, doctor2, new DateTime(2026, 4, 29, 13, 0, 0)));
 
     }
 
     public void ShowAvailableAppointments()
     {
-        foreach (var appointment in _appointments)
+        var available = _appointments.Where(a => !a.IsBooked).OrderBy(a => a.DateTime);
+
+        foreach (var a in available)
         {
-            if (appointment.IsBooked == false) Console.WriteLine($"{appointment.Doctor.Name}, свободен в {appointment.DateTime:dd.MM.yyyy HH:mm}");
-            
+            Console.WriteLine($"{a.ID}: {a.Doctor.Name} ({a.Doctor.Specialization}) - {a.DateTime:dd.MM.yyyy HH:mm}");
         }
         
     }
 
-    public void BookAppointment(int appointmentId)
+    public void BookAppointment(int appointmentId, Patient patient)
     {
-        foreach (var appointment in _appointments)
+        var appointment = _appointments.FirstOrDefault(a => a.ID == appointmentId);
+        
+        if (appointment == null)
         {
-            if (appointment.ID == appointmentId)
-            {
-                if (appointment.IsBooked == false)
-                {
-                    appointment.IsBooked = true;
-                    Console.WriteLine("Успешная запись");
-                    return;
-                }
-                else 
-                {
-                    Console.WriteLine("Запись уже занята");
-                    return;
-                }
-            }
+            Console.WriteLine("Нет такой записи");
+            return;
         }
 
-        Console.WriteLine("Нет такой записи");
+        try
+        {
+            appointment.Book(patient);
+            Console.WriteLine($"Успешная запись: {patient.FullName} к {appointment.Doctor.Name} на {appointment.DateTime:dd.MM.yyyy HH:mm}");
+        }
+        catch (InvalidOperationException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
     public void CancelAppointment(int appointmentId)
@@ -63,14 +63,16 @@ class Clinic
             Console.WriteLine("Такой записи не существует.");
             return;
         }
-        if (appointment.IsBooked == false)
+        
+        try
         {
-            Console.WriteLine("Это окно уже свободно");
-            return;
+            appointment.Cancel();
+            Console.WriteLine($"Запись {appointmentId} отменена");
         }
-
-        appointment.IsBooked = false;
-        Console.WriteLine($"Запись {appointmentId} отменена");
+        catch (InvalidOperationException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
     
