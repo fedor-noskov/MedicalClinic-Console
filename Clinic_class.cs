@@ -25,7 +25,8 @@ class Clinic
     {
         foreach (var appointment in _appointments)
         {
-            if (appointment.IsBooked == false) Console.WriteLine($"{appointment.Doctor.Name}, свободен в {appointment.DateTime}");
+            if (appointment.IsBooked == false) Console.WriteLine($"{appointment.Doctor.Name}, свободен в {appointment.DateTime:dd.MM.yyyy HH:mm}");
+            
         }
         
     }
