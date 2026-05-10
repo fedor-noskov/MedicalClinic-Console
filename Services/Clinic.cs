@@ -30,42 +30,20 @@ public class Clinic : IClinic
     {
         var appointment = _appointments.FirstOrDefault(a => a.ID == appointmentId);
         
-        if (appointment == null)
-        {
-            Console.WriteLine("Нет такой записи");
-            return;
-        }
-
-        try
-        {
-            appointment.Book(patient);
-            Console.WriteLine($"Успешная запись: {patient.FullName} к {appointment.Doctor.Name} на {appointment.DateTime:dd.MM.yyyy HH:mm}");
-        }
-        catch (InvalidOperationException ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
+        if (appointment == null) throw new KeyNotFoundException($"Запись с ID {appointmentId} не найдена.");
+        
+        appointment.Book(patient);
     }
+           
+        
 
     public void CancelAppointment(int appointmentId)
     {
         var appointment = _appointments.FirstOrDefault(a => a.ID == appointmentId);
 
-        if (appointment == null)
-        {
-            Console.WriteLine("Такой записи не существует.");
-            return;
-        }
-        
-        try
-        {
-            appointment.Cancel();
-            Console.WriteLine($"Запись {appointmentId} отменена");
-        }
-        catch (InvalidOperationException ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
+        if (appointment == null) throw new KeyNotFoundException($"Запись с ID {appointmentId} не существует.");
+
+        appointment.Cancel();
     }
 
     
