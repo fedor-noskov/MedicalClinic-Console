@@ -1,4 +1,4 @@
-class Appointment
+public class Appointment
 {
     private int _id;
     private Doctor _doctor;
