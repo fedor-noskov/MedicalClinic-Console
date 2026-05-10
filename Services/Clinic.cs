@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Linq.Expressions;
 
 public class Clinic : IClinic
 {
@@ -22,15 +21,9 @@ public class Clinic : IClinic
 
     }
 
-    public void ShowAvailableAppointments()
+    public IEnumerable<Appointment> GetAvailableAppointments()
     {
-        var available = _appointments.Where(a => !a.IsBooked).OrderBy(a => a.DateTime);
-
-        foreach (var a in available)
-        {
-            Console.WriteLine($"{a.ID}: {a.Doctor.Name} ({a.Doctor.Specialization}) - {a.DateTime:dd.MM.yyyy HH:mm}");
-        }
-        
+        return _appointments.Where(a => !a.IsBooked).OrderBy(a => a.DateTime);       
     }
 
     public void BookAppointment(int appointmentId, Patient patient)
