@@ -1,4 +1,4 @@
-class Patient
+public class Patient 
 {
     private string _fullName;
     private string _phoneNumber;
