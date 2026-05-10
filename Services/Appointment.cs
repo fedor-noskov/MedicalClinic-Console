@@ -1,4 +1,4 @@
-class Appointment
+public class Appointment
 {
     private int _id;
     private Doctor _doctor;
@@ -7,7 +7,7 @@ class Appointment
 
     public DateTime DateTime {get => _dateTime; set => _dateTime = value;}
     
-    public int ID {get => _id; private set => _id = value > 0 ? value : 0;}
+    public int ID {get => _id; private set => _id = value > 0 ? value : throw new ArgumentException("ID должен быть положительным!");}
 
     public Doctor Doctor {get => _doctor; set => _doctor = value ?? throw new ArgumentNullException(nameof(value)); }
 

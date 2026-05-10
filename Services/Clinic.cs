@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-class Clinic
+public class Clinic : IClinic
 {
     private List<Doctor> _doctors;
     private List<Appointment> _appointments;

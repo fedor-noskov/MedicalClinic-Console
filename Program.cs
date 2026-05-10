@@ -1,4 +1,4 @@
-﻿Clinic clinic = new();
+﻿IClinic clinic = new Clinic();
 Patient patient = new Patient(1, "Иван Петров", "+7 999 123-45-67");
 
 Console.WriteLine("Доступные записи: ");
