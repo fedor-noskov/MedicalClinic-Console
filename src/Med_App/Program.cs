@@ -2,7 +2,7 @@
 
 var services = new ServiceCollection();
 services.AddSingleton<IClinic, Clinic>();
-var provider = services.BuildServiceProvider();
+using var provider = services.BuildServiceProvider();
 
 var clinic = provider.GetRequiredService<IClinic>();
 

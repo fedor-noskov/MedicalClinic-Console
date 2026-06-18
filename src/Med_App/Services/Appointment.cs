@@ -5,11 +5,15 @@ public class Appointment
     private DateTime _dateTime;
     private bool _isBooked;
 
-    public DateTime DateTime {get => _dateTime; set => _dateTime = value;}
+    public DateTime DateTime 
+    {
+        get => _dateTime; 
+        set => _dateTime = value > DateTime.Now ? value : throw new ArgumentException("Дата записи должна быть в будущем."); 
+    }
     
     public int ID {get => _id; private set => _id = value > 0 ? value : throw new ArgumentException("ID должен быть положительным!");}
 
-    public Doctor Doctor {get => _doctor; set => _doctor = value ?? throw new ArgumentNullException(nameof(value)); }
+    public Doctor Doctor {get => _doctor; set => _doctor = value ?? throw new ArgumentNullException(nameof(Doctor)); }
 
     public bool IsBooked {get => _isBooked; private set => _isBooked = value;}
 

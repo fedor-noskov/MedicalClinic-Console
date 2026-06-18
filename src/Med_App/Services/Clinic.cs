@@ -16,8 +16,8 @@ public class Clinic : IClinic
         _doctors.Add(doctor1);
         _doctors.Add(doctor2);
 
-        _appointments.Add(new Appointment(1, doctor1, new DateTime(2026, 4, 29, 12, 0, 0)));
-        _appointments.Add(new Appointment(2, doctor2, new DateTime(2026, 4, 29, 13, 0, 0)));
+        _appointments.Add(new Appointment(1, doctor1, new DateTime(2026, 8, 15, 12, 0, 0)));
+        _appointments.Add(new Appointment(2, doctor2, new DateTime(2026, 8, 15, 13, 0, 0)));
 
     }
 
