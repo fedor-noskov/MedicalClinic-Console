@@ -2,8 +2,8 @@ using Med_App;
 public class Patient 
 {
     private int _id;
-    private string _fullName;
-    private string _phoneNumber;
+    private string _fullName = null!;
+    private string _phoneNumber = null!;
 
     public int ID {get => _id; private set => _id = Guard.Positive(value, "ID");}
     public string FullName {get => _fullName; set => _fullName = Guard.NotEmpty(value, "Имя"); }
