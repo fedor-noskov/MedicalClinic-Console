@@ -2,7 +2,7 @@ using Med_App;
 public class Appointment
 {
     private int _id;
-    private Doctor _doctor;
+    private Doctor _doctor = null!;
     private DateTime _dateTime;
     private bool _isBooked;
 
