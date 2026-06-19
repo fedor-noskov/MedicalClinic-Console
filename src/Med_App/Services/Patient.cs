@@ -1,15 +1,17 @@
+using Med_App;
 public class Patient 
 {
+    private int _id;
     private string _fullName;
     private string _phoneNumber;
 
-    public int ID {get; private set;}
-    public string FullName {get => _fullName; set => _fullName = string.IsNullOrEmpty(value) ? throw new ArgumentException("Имя не может быть пустым!") : value; }
-    public string PhoneNumber {get => _phoneNumber; set => _phoneNumber = string.IsNullOrEmpty(value) ? throw new ArgumentException("Номер телефона не может быть пустым!") : value;}
+    public int ID {get => _id; private set => _id = Guard.Positive(value, "ID");}
+    public string FullName {get => _fullName; set => _fullName = Guard.NotEmpty(value, "Имя"); }
+    public string PhoneNumber {get => _phoneNumber; set => _phoneNumber = Guard.NotEmpty(value, "Номер телефона"); }
 
     public Patient(int id, string fullName, string phoneNumber)
     {
-        ID = id > 0 ? id : throw new ArgumentException("ID должен быть положительным!");
+        ID = id;
         FullName = fullName;
         PhoneNumber = phoneNumber;
         

@@ -1,3 +1,4 @@
+using Med_App;
 public class Appointment
 {
     private int _id;
@@ -11,7 +12,7 @@ public class Appointment
         set => _dateTime = value > DateTime.Now ? value : throw new ArgumentException("Дата записи должна быть в будущем."); 
     }
     
-    public int ID {get => _id; private set => _id = value > 0 ? value : throw new ArgumentException("ID должен быть положительным!");}
+    public int ID {get => _id; private set => _id = Guard.Positive(value, "ID");}
 
     public Doctor Doctor {get => _doctor; set => _doctor = value ?? throw new ArgumentNullException(nameof(Doctor)); }
 
