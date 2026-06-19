@@ -1,5 +1,3 @@
-using System.Linq;
-
 public class Clinic : IClinic
 {
     private List<Doctor> _doctors;
