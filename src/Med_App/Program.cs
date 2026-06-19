@@ -1,4 +1,11 @@
-﻿IClinic clinic = new Clinic();
+﻿using Microsoft.Extensions.DependencyInjection;
+
+var services = new ServiceCollection();
+services.AddSingleton<IClinic, Clinic>();
+using var provider = services.BuildServiceProvider();
+
+var clinic = provider.GetRequiredService<IClinic>();
+
 Patient patient = new Patient(1, "Иван Петров", "+7 999 123-45-67");
 
 Console.WriteLine("Доступные записи: ");
