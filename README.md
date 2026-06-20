@@ -41,6 +41,7 @@ var clinic = provider.GetRequiredService<IClinic>();
 - **Бизнес-логика:** бронирование и отмена записей, защита от повторного бронирования, обработка несуществующих ID
 - **DI-контейнер:** разрешение зависимостей через `ServiceCollection` вместо прямого `new`
 - **Разделение ответственности:** сервисный слой бросает исключения, обработка — на стороне вызывающего кода
+- **Тесты:** 21 юнит-тест (xUnit + Moq) на доменную логику `Doctor`, `Patient`, `Appointment`, `Clinic`
 
 ## Стек
 
@@ -50,6 +51,5 @@ var clinic = provider.GetRequiredService<IClinic>();
 
 ## Дальнейшее развитие
 
-- Переписать в ASP.NET Core Web API
-- Подключить PostgreSQL через Entity Framework Core
-- Покрыть доменную логику юнит-тестами (xUnit + Moq)
+Med_App — демонстрация фундамента (ООП, DI, юнит-тесты, SOLID).
+Основной проект — **PulseMonitor** (Web API, EF Core/PostgreSQL, FHIR-слой) — отдельный репозиторий, в разработке.
